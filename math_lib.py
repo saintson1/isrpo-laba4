@@ -25,6 +25,15 @@ class math:
 
 
 class math_test_case(unittest.TestCase):
+  def test_pow_neg2(self):
+    self.assertEqual(math.pow(-2, 1), -2)
+    self.assertEqual(math.pow(-2, 2), 4)
+    self.assertEqual(math.pow(-2, 3), -8)
+    self.assertEqual(math.pow(-2, 4), 16)
+    self.assertEqual(math.pow(-2, 5), -32)
+    self.assertEqual(math.pow(-2, 6), 64)
+    self.assertEqual(math.pow(-2, 7), -128)
+    self.assertEqual(math.pow(-2, 8), 256)
   def test_pow2(self):
     self.assertEqual(math.pow(2, 1), 2)
     self.assertEqual(math.pow(2, 2), 4)
@@ -43,29 +52,52 @@ class math_test_case(unittest.TestCase):
     self.assertEqual(math.pow(39, 6), 3518743761)
     self.assertEqual(math.pow(39, 7), 137231006679)
     self.assertEqual(math.pow(39, 8), 5352009260481)
-  def test_fact(self):
+  def test_fact0(self):
     self.assertEqual(math.fact(0), 0)
+  def test_fact_neg(self):
+    self.assertEqual(math.fact(-1), 0)
+    self.assertEqual(math.fact(-2), 0)
+    self.assertEqual(math.fact(-3), 0)
+    self.assertEqual(math.fact(-4), 0)
+    self.assertEqual(math.fact(-5), 0)
+    self.assertEqual(math.fact(-6), 0)
+  def test_fact(self):
     self.assertEqual(math.fact(1), 1)
     self.assertEqual(math.fact(2), 2)
     self.assertEqual(math.fact(3), 6)
     self.assertEqual(math.fact(4), 24)
     self.assertEqual(math.fact(5), 120)
     self.assertEqual(math.fact(6), 720)
-  def test_matr2x2det(self):
+  def test_matr2x2det0(self):
     self.assertEqual(math.matr2x2det(1, 1, 1, 1), 0)
     self.assertEqual(math.matr2x2det(1, 1, 2, 2), 0)
     self.assertEqual(math.matr2x2det(1, 2, 30, 60), 0)
-    self.assertEqual(math.matr2x2det(30, 2, -10, 5), 170)
+  def test_matr2x2det_triang(self):
+    self.assertEqual(math.matr2x2det(1, 23, 1, 0), -23)
   def test_matr2x2det(self):
-      self.assertEqual(math.matr3x3det(6, 12, 1000,
-                                       0, 8, 84928,
-                                       0, 0, 100), 4800)
-      self.assertEqual(math.matr3x3det(1, 2, 3,
-                                       4, 5, 6,
-                                       7, 8, 9), 0)
-      self.assertEqual(math.matr3x3det(1, 2, 3,
-                                       10, 10, 10,
-                                       3, 2, 9), -80)
-      self.assertEqual(math.matr3x3det(-9584, -134, 333,
-                                       30, 30, 30,
-                                       239, 777, 680), 35036880)
+    self.assertEqual(math.matr2x2det(30, 2, -10, 5), 170)
+    self.assertEqual(math.matr2x2det(30, 7, -10, -2), 10)
+  def test_matr3x3det0(self):
+    self.assertEqual(math.matr3x3det(1, 2, 3,
+                                      4, 5, 6,
+                                      7, 8, 9), 0)
+    self.assertEqual(math.matr3x3det(1, 2, 3,
+                                     1, 2, 3,
+                                     1, 2, 3,), 0)
+  def test_matr3x3det_triang(self):
+    self.assertEqual(math.matr3x3det(1, 2, 3,
+                                     0, 5, 6,
+                                     0, 0, 9), 45)
+    self.assertEqual(math.matr3x3det(1, 0, 0,
+                                     1, 5, 0,
+                                     345, 99999999, -50), -250)
+  def test_matr3x3det(self):
+    self.assertEqual(math.matr3x3det(6, 12, 1000,
+                                      0, 8, 84928,
+                                      0, 0, 100), 4800)
+    self.assertEqual(math.matr3x3det(1, 2, 3,
+                                      10, 10, 10,
+                                      3, 2, 9), -80)
+    self.assertEqual(math.matr3x3det(-9584, -134, 333,
+                                      30, 30, 30,
+                                      239, 777, 680), 35036880)
